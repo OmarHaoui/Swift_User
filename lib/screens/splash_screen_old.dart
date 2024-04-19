@@ -37,17 +37,18 @@
 //   }
 // }
 import 'package:flutter/material.dart';
+import 'package:swift_user1/constant/app_color.dart';
 
 import 'package:swift_user1/screens/authentication/registration.dart';
 
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+class SplashScreenOld extends StatefulWidget {
+  const SplashScreenOld({Key? key}) : super(key: key);
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
+  State<SplashScreenOld> createState() => _SplashScreenOldState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _SplashScreenOldState extends State<SplashScreenOld> {
   void _navigateToRegistrationScreen() {
     Navigator.pushReplacement(
       context,
@@ -58,13 +59,13 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF6B4CE5), // Using the color #6B4CE5
+      backgroundColor: AppColor.primaryColor, // Using the color #6B4CE5
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             // Your splash screen image or design
-            Image.asset("assets/images/splash.png"),
+            Image.asset("assets/images/swift1.jpg"),
             const SizedBox(height: 20.0),
             ElevatedButton(
               onPressed: _navigateToRegistrationScreen,

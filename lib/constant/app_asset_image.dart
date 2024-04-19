@@ -26,6 +26,7 @@ class AppAssetImage {
 
 // register
   static const fbLogo = 'assets/images/facebook_logo.png';
+  static const googleLogo = 'assets/images/google_logo.png';
 
 // home page
   static const profilePicture = 'assets/images/profile_picture.jpg';

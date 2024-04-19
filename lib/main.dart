@@ -1,13 +1,16 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
+import 'package:swift_user1/constant/apiendpoints.dart';
+import 'package:swift_user1/constant/app_screen_size.dart';
 import 'package:swift_user1/firebase_options.dart';
-import 'package:swift_user1/screens/course.dart';
+import 'package:swift_user1/screens/authentication/splash_page.dart';
 import 'package:swift_user1/screens/home.dart' as HomeScreen;
 import 'package:swift_user1/screens/authentication/registration.dart'
     as RegistrationScreen;
-import 'package:swift_user1/screens/onboarding/onboarding.dart';
-import 'package:swift_user1/screens/splash_screen.dart';
+import 'package:flutter_google_places/flutter_google_places.dart';
+import 'package:swift_user1/screens/location/tracking_screen.dart';
+import 'package:swift_user1/screens/tracking_2.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,7 +19,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key});
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,11 +30,12 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.light,
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/',
+      initialRoute: TrackingScreen.id,
       routes: {
-        '/': (context) => const CourseScreen(),
-        '/.': (context) => const OnboardingScreen(),
-        '/registration': (context) => RegistrationScreen.RegistrationScreen(),
+        '/': (context) => const SplashScreen(),
+        TrackingScreen.id: (context) => const TrackingScreen(),
+        RegistrationScreen.RegistrationScreen.id: (context) =>
+            RegistrationScreen.RegistrationScreen(),
         '/home': (context) =>
             HomeScreen.HomeScreen(userName: 'getfrmProvider', role: 'User'),
       },

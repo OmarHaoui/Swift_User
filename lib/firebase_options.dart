@@ -44,7 +44,7 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCWPUDUza93SQ8CI2G2llftEFD--LSWS_c',
+    apiKey: 'AIzaSyCEQQzxlXsvmykXtDyabgfThOplHcX8Udo',
     appId: '1:296444901875:web:a04233c460e99b4514fa86',
     messagingSenderId: '296444901875',
     projectId: 'otp-auth-890bd',
@@ -53,7 +53,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCFna6NlK9p94N-hgN9KsdVasa8S5VTWco',
+    apiKey: 'AIzaSyB-32rLtfT6rZv5gVxdHGwov9JPGiR2hsY',
     appId: '1:296444901875:android:63a2aa15cb1881c814fa86',
     messagingSenderId: '296444901875',
     projectId: 'otp-auth-890bd',
@@ -61,7 +61,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBequzHMPPtgfY5NC7DipDqj-xYwhjhpkc',
+    apiKey: 'AIzaSyCwaUWd0pxjmU4b2M0txdgt6zoMIMOdBFQ',
     appId: '1:296444901875:ios:654109a8d197bdb714fa86',
     messagingSenderId: '296444901875',
     projectId: 'otp-auth-890bd',
@@ -72,7 +72,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyBequzHMPPtgfY5NC7DipDqj-xYwhjhpkc',
+    apiKey: 'AIzaSyCwaUWd0pxjmU4b2M0txdgt6zoMIMOdBFQ',
     appId: '1:296444901875:ios:03696e3b4daf6b5814fa86',
     messagingSenderId: '296444901875',
     projectId: 'otp-auth-890bd',

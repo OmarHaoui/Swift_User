@@ -239,23 +239,30 @@
 //   }
 // }
 
+// ignore_for_file: unnecessary_new
+
 // extension LatLngBoundsExtension on LatLngBounds {
 //   bool isValid() {
 //     return southwest.latitude <= northeast.latitude &&
 //         southwest.longitude <= northeast.longitude;
 //   }
 // }
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
+import 'package:location/location.dart' as loc;
 import 'package:swift_user1/constant/app_color.dart';
+import 'package:swift_user1/constant/app_screen_size.dart';
 import 'package:swift_user1/screens/rides_diso.dart';
+import 'package:swift_user1/screens/location/tracking_screen.dart';
 import 'package:swift_user1/utils/dummy_data.dart';
 
 void main() {
   runApp(
-    MaterialApp(
+    const MaterialApp(
       home: CourseScreen(),
     ),
   );
@@ -276,6 +283,7 @@ class _CourseScreenState extends State<CourseScreen> {
   LatLng? _destination;
   Set<Polyline> _polylines = {};
   bool _useMapIntegration = false;
+  bool isLoading = false;
 
   @override
   void initState() {
@@ -305,22 +313,22 @@ class _CourseScreenState extends State<CourseScreen> {
           children: [
             TextField(
               controller: _originController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: 'Origin',
                 border: OutlineInputBorder(),
                 contentPadding: EdgeInsets.all(12),
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             TextField(
               controller: _destinationController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: 'Destination',
                 border: OutlineInputBorder(),
                 contentPadding: EdgeInsets.all(12),
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Row(
               children: [
                 Expanded(
@@ -329,13 +337,13 @@ class _CourseScreenState extends State<CourseScreen> {
                       _confirmDestination(); // Call the function to navigate to RidesDsipo screen
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFF6B4CE5),
+                      backgroundColor: const Color(0xFF6B4CE5),
                       foregroundColor: Colors.white,
                     ),
-                    child: Text('Show Route'),
+                    child: const Text('Show Route'),
                   ),
                 ),
-                SizedBox(width: 16),
+                const SizedBox(width: 16),
                 DropdownButton<bool>(
                   value: _useMapIntegration,
                   onChanged: (value) {
@@ -344,11 +352,11 @@ class _CourseScreenState extends State<CourseScreen> {
                     });
                   },
                   items: [
-                    DropdownMenuItem(
+                    const DropdownMenuItem(
                       value: false,
                       child: Text('Manual Input'),
                     ),
-                    DropdownMenuItem(
+                    const DropdownMenuItem(
                       value: true,
                       child: Text('Map Integration'),
                     ),
@@ -356,7 +364,7 @@ class _CourseScreenState extends State<CourseScreen> {
                 ),
               ],
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Expanded(
               child: _useMapIntegration
                   ? GoogleMap(
@@ -365,19 +373,19 @@ class _CourseScreenState extends State<CourseScreen> {
                           _controller = controller;
                         });
                       },
-                      initialCameraPosition: CameraPosition(
+                      initialCameraPosition: const CameraPosition(
                         target: LatLng(36.7528, 3.0420),
                         zoom: 12.0,
                       ),
                       markers: Set.of([
                         if (_origin != null)
                           Marker(
-                            markerId: MarkerId("origin"),
+                            markerId: const MarkerId("origin"),
                             position: _origin!,
                           ),
                         if (_destination != null)
                           Marker(
-                            markerId: MarkerId("destination"),
+                            markerId: const MarkerId("destination"),
                             position: _destination!,
                           ),
                       ]),
@@ -391,12 +399,11 @@ class _CourseScreenState extends State<CourseScreen> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          //TODO: Add any additional functionality for the FAB
-        },
-        backgroundColor: Color(0xFF6B4CE5),
-        foregroundColor: Colors.white,
-        child: Icon(Icons.add),
+        //TODO: Add any additional functionality for the FAB
+        onPressed: getCurrentLocation,
+        backgroundColor: AppColor.appThemeColor,
+        foregroundColor: AppColor.primaryColor,
+        child: isLoading ? AppSceenSize.loadingIcon : const Icon(Icons.add),
       ),
     );
   }
@@ -446,8 +453,8 @@ class _CourseScreenState extends State<CourseScreen> {
         setState(() {
           _polylines.clear();
           _polylines.add(Polyline(
-            polylineId: PolylineId('route'),
-            color: Color(0xFF6B4CE5),
+            polylineId: const PolylineId('route'),
+            color: const Color(0xFF6B4CE5),
             width: 5,
             points: routePoints,
           ));
@@ -510,6 +517,42 @@ class _CourseScreenState extends State<CourseScreen> {
       // Handle case where destination is not set
       print("Please set the destination first.");
     }
+  }
+
+  getCurrentLocation() async {
+    isLoading = true;
+    loc.Location location = new loc.Location();
+
+    bool serviceEnabled;
+    loc.PermissionStatus permissionGranted;
+    loc.LocationData locationData;
+
+    serviceEnabled = await location.serviceEnabled();
+    if (!serviceEnabled) {
+      serviceEnabled = await location.requestService();
+      if (!serviceEnabled) {
+        setState(() => isLoading = false);
+        return;
+      }
+    }
+
+    permissionGranted = await location.hasPermission();
+    if (permissionGranted == loc.PermissionStatus.denied) {
+      permissionGranted = await location.requestPermission();
+      if (permissionGranted != loc.PermissionStatus.granted) {
+        setState(() => isLoading = false);
+        return;
+      }
+    }
+
+    locationData = await location.getLocation();
+    log(locationData.latitude!.toString());
+    log(locationData.longitude!.toString());
+
+    LatLng currentLocation = new LatLng(
+        locationData.latitude!.toDouble(), locationData.longitude!.toDouble());
+    setState(() => isLoading = false);
+    return currentLocation;
   }
 }
 

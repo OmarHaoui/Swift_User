@@ -4,9 +4,9 @@ import 'package:swift_user1/constant/app_asset_image.dart';
 import 'package:swift_user1/constant/app_color.dart';
 import 'package:swift_user1/screens/about.dart';
 import 'package:swift_user1/screens/contact.dart';
-import 'package:swift_user1/screens/course.dart';
 import 'package:swift_user1/screens/historique.dart';
 import 'package:swift_user1/screens/authentication/registration.dart';
+import 'package:swift_user1/screens/location/course.dart';
 import 'package:swift_user1/screens/settings.dart';
 
 class HomeScreen extends StatelessWidget {

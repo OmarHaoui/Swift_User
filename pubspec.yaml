@@ -47,6 +47,14 @@ dependencies:
   intl_phone_number_input: 
   intl_phone_field: 
   provider:
+  http:
+  pinput: ^4.0.0
+  flutter_google_places: ^0.3.0
+  geolocator: 
+  google_maps_webservice: ^0.0.20-nullsafety.5
+  
+  
+  
 
 dev_dependencies:
   flutter_test:
@@ -91,6 +99,10 @@ flutter:
     - family: Josefin Sans
       fonts:
         - asset: assets/fonts/JosefinSans-Regular.ttf
+    - family: Rubic
+      fonts:
+        - asset: assets/fonts/Rubik-Regular.ttf
+        
 
         
   # For details regarding fonts from package dependencies,

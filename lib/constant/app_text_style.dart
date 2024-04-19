@@ -37,15 +37,16 @@ class AppTextStyle {
       fontSize: 17, color: Color(0xFF262628), fontWeight: FontWeight.w500);
 
   // Phone Verification
-  static const phoneverifytext = TextStyle(
-      fontSize: 25,
-      color: Color.fromARGB(255, 231, 231, 238),
+  static const enterOtp = TextStyle(
+      fontSize: 20,
+      color: Color.fromARGB(255, 116, 116, 131),
       fontWeight: FontWeight.w700);
 
-  static const otpverifytext = TextStyle(
-      fontSize: 15,
-      color: Color.fromARGB(255, 231, 231, 238),
-      fontWeight: FontWeight.w400);
+  static const phoneVerifyText = TextStyle(
+    fontSize: 35,
+    color: Colors.black,
+    fontWeight: FontWeight.w600,
+  );
 
   // Phone Verification
   static const notificationsText = TextStyle(
