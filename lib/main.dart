@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.light,
         primarySwatch: Colors.blue,
       ),
-      initialRoute: TrackingScreen.id,
+      initialRoute: '/ ',
       routes: {
         '/': (context) => const SplashScreen(),
         TrackingScreen.id: (context) => const TrackingScreen(),
