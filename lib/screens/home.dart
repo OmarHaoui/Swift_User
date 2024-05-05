@@ -10,6 +10,7 @@ import 'package:swift_user1/screens/location/course.dart';
 import 'package:swift_user1/screens/settings.dart';
 
 class HomeScreen extends StatelessWidget {
+  static String id = '/home';
   final String userName;
   final String role;
   final FirebaseAuth _auth = FirebaseAuth.instance;

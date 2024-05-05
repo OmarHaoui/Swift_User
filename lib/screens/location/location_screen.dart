@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_new
+// ignore_for_file: unnecessary_new, prefer_const_constructors
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -11,9 +11,12 @@ import 'package:google_maps_webservice/places.dart';
 import 'package:swift_user1/constant/apiendpoints.dart';
 import 'package:swift_user1/constant/app_color.dart';
 import 'package:swift_user1/constant/app_screen_size.dart';
+import 'package:swift_user1/screens/location/tracking_screen.dart';
+import 'package:swift_user1/screens/tracking_2.dart';
 
 class LocationScreen extends StatefulWidget {
-  const LocationScreen({super.key});
+  LatLng? currentLocation;
+  LocationScreen({super.key, required this.currentLocation});
 
   @override
   State<LocationScreen> createState() => _LocationScreenState();
@@ -22,8 +25,8 @@ class LocationScreen extends StatefulWidget {
 class _LocationScreenState extends State<LocationScreen> {
   var pickupController = new TextEditingController();
   var destinationController = new TextEditingController();
-  var destination;
-  var pickup;
+  LatLng destination = new LatLng(36.5336949015458, 2.9940489365466054);
+  LatLng pickup = new LatLng(36.50006243379029, 2.8614381235566615);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -132,6 +135,21 @@ class _LocationScreenState extends State<LocationScreen> {
                           ),
                         ],
                       ),
+                    ),
+                    const SizedBox(height: 10),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (_) => TrackingScreen2(
+                              currentLocation: widget.currentLocation,
+                              destination: destination,
+                              pickup: pickup,
+                            ),
+                          ),
+                        );
+                      },
+                      child: Text('Done'),
                     )
                   ],
                 ),
@@ -160,7 +178,7 @@ class _LocationScreenState extends State<LocationScreen> {
               ],
             ),
             onTap: () {
-              //TODO:
+              //TODO: Create the saved places feature
             },
           ),
           ListTile(
@@ -184,7 +202,7 @@ class _LocationScreenState extends State<LocationScreen> {
               ],
             ),
             onTap: () {
-              //TODO:
+              //TODO: Create the set location on map feature
             },
           ),
         ],

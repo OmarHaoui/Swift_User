@@ -256,8 +256,8 @@ import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:location/location.dart' as loc;
 import 'package:swift_user1/constant/app_color.dart';
 import 'package:swift_user1/constant/app_screen_size.dart';
-import 'package:swift_user1/screens/rides_diso.dart';
 import 'package:swift_user1/screens/location/tracking_screen.dart';
+import 'package:swift_user1/screens/rides_diso.dart';
 import 'package:swift_user1/utils/dummy_data.dart';
 
 void main() {
@@ -509,8 +509,7 @@ class _CourseScreenState extends State<CourseScreen> {
       Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (context) =>
-                RidesDsipo(availableDrivers: availableDrivers)),
+            builder: (context) => RidesDsipo(avaiDrivers: availableDrivers)),
         //TODO: Fetch or generate available driver information (replace with your data source)
       );
     } else {

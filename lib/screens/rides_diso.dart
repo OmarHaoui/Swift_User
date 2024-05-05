@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:swift_user1/models/driver.dart';
 import 'package:swift_user1/screens/booking.dart'; // Import the booking screen
 
 class RidesDsipo extends StatelessWidget {
-  final List<DriverInfo> availableDrivers;
+  final List<DriverInfo> avaiDrivers;
 
-  RidesDsipo({required this.availableDrivers});
+  RidesDsipo({required this.avaiDrivers});
 
   @override
   Widget build(BuildContext context) {
@@ -15,18 +16,18 @@ class RidesDsipo extends StatelessWidget {
         foregroundColor: Colors.white,
       ),
       body: ListView.builder(
-        itemCount: availableDrivers.length,
+        itemCount: avaiDrivers.length,
         itemBuilder: (context, index) {
           return Card(
             elevation: 2,
             margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
             child: ListTile(
-              title: Text(availableDrivers[index].driverName),
-              subtitle: Text(availableDrivers[index].vehicleDetails),
-              trailing: Text('ETA: ${availableDrivers[index].eta} mins'),
+              title: Text(avaiDrivers[index].driverName),
+              subtitle: Text(avaiDrivers[index].vehicleDetails),
+              trailing: Text('ETA: ${avaiDrivers[index].eta} mins'),
               onTap: () {
                 // Handle driver selection and navigate to booking screen
-                _navigateToBookingScreen(context, availableDrivers[index]);
+                _navigateToBookingScreen(context, avaiDrivers[index]);
               },
             ),
           );

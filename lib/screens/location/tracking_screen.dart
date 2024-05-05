@@ -183,7 +183,9 @@ class _TrackingScreenState extends State<TrackingScreen> {
                     //TODO:MAKE A NEW SCREEN
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (_) => const LocationScreen(),
+                        builder: (_) => LocationScreen(
+                          currentLocation: currentLocation,
+                        ),
                       ),
                     );
                   },

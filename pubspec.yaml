@@ -52,7 +52,7 @@ dependencies:
   flutter_google_places: ^0.3.0
   geolocator: 
   google_maps_webservice: ^0.0.20-nullsafety.5
-  
+  dotted_line:
   
   
 
