@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:swift_user1/screens/booking.dart';
 import 'package:swift_user1/screens/rides_diso.dart';
+import 'package:swift_user1/models/driver.dart';
 
 class Ride {
   final String name;

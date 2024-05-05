@@ -254,6 +254,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:location/location.dart' as loc;
+import 'package:swift_user1/models/driver.dart';
 import 'package:swift_user1/constant/app_color.dart';
 import 'package:swift_user1/constant/app_screen_size.dart';
 import 'package:swift_user1/screens/location/tracking_screen.dart';
@@ -509,7 +510,8 @@ class _CourseScreenState extends State<CourseScreen> {
       Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (context) => RidesDsipo(avaiDrivers: availableDrivers)),
+            builder: (context) =>
+                RidesDsipo(avaiDrivers: DummyData.availableDrivers)),
         //TODO: Fetch or generate available driver information (replace with your data source)
       );
     } else {

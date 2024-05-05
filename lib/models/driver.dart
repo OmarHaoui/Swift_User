@@ -1,14 +1,15 @@
 class DriverInfo {
-  final int eta;
   final String driverName;
   final String vehicleDetails;
+  final int eta;
 
   DriverInfo({
-    required this.eta,
     required this.driverName,
     required this.vehicleDetails,
+    required this.eta,
   });
 }
+
 // class DriverInfo {
 //   final int id;
 //   final String name;

@@ -1,7 +1,7 @@
 // Import necessary packages
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-
+import 'package:swift_user1/models/driver.dart';
 import 'package:swift_user1/screens/rides_diso.dart'; // Import the rides_dispo.dart file
 
 class BookingScreen extends StatelessWidget {

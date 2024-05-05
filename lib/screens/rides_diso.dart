@@ -51,15 +51,3 @@ class RidesDsipo extends StatelessWidget {
     );
   }
 }
-
-class DriverInfo {
-  final String driverName;
-  final String vehicleDetails;
-  final int eta;
-
-  DriverInfo({
-    required this.driverName,
-    required this.vehicleDetails,
-    required this.eta,
-  });
-}
